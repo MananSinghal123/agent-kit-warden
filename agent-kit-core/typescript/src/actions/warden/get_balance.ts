@@ -44,23 +44,26 @@ const getKeyById = async (keyId: bigint) => {
 };
 
 //New Code
-const account = privateKeyToAccount('YOUR_PRIVATE_KEY')
+// if (!process.env.PRIVATE_KEY) {
+//     throw new Error("Private key is not defined");
+// }
+// const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
 
-const walletClient = createWalletClient({
-    account,
-    chain: sepolia,
-    transport: http('YOUR_RPC_URL')
-  })
+// const walletClient = createWalletClient({
+//     account,
+//     chain: sepolia,
+//     transport: http(process.env.RPC_URL),
+//   })
 
-const writeContract = async () => {
-    const hash = await walletClient.writeContract({
-      address: contractAddress,
-      abi: botAbi,
-      functionName: 'yourWriteFunction',
-      args: ['any', 'arguments', 'needed']
-    })
-    console.log(hash) // Transaction hash
-}
+// const writeContract = async (token1,token2) => {
+//     const hash = await walletClient.writeContract({
+//       address: `0xb4aA9BcF2DAA6b30D8c105aD8D1927F351a92744`,
+//       abi: botAbi,
+//       functionName: 'execute',
+//       args: [token1,token2]
+//     })
+//     console.log(hash) // Transaction hash
+// }
 
 
 
@@ -77,6 +80,7 @@ export const GetBalanceInput = z.object({
  * @param args - The input arguments for the action.
  * @returns A message containing the balance information.
  */
+
 export async function getBalance(
     args: z.infer<typeof GetBalanceInput>
 ): Promise<string> {
@@ -108,3 +112,4 @@ export class GetBalanceAction implements WardenAction<typeof GetBalanceInput> {
     public schema = GetBalanceInput;
     public function = getBalance;
 }
+
