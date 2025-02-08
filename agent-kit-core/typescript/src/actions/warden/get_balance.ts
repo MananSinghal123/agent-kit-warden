@@ -1,10 +1,12 @@
 import { WardenAction } from "./warden_action";
-import { createPublicClient, formatEther, http } from "viem";
+import { createPublicClient, createWalletClient, formatEther, http } from "viem";
 import { z } from "zod";
 import wardenPrecompileAbi from "../../utils/contracts/abi/wardenPrecompileAbi";
+import {botAbi} from "../../utils/contracts/abi/botAbi";
 import { KNOWN_CONTRACTS } from "../../utils/contracts/constants/known";
 import { primaryChain } from "../../utils/chains";
 import { sepolia } from "viem/chains";
+import { privateKeyToAccount } from "viem/accounts";
 
 const wardenContract = KNOWN_CONTRACTS[primaryChain.id]?.WARDEN;
 
@@ -40,6 +42,27 @@ const getKeyById = async (keyId: bigint) => {
         functionName: "keyById",
     });
 };
+
+//New Code
+const account = privateKeyToAccount('YOUR_PRIVATE_KEY')
+
+const walletClient = createWalletClient({
+    account,
+    chain: sepolia,
+    transport: http('YOUR_RPC_URL')
+  })
+
+const writeContract = async () => {
+    const hash = await walletClient.writeContract({
+      address: contractAddress,
+      abi: botAbi,
+      functionName: 'yourWriteFunction',
+      args: ['any', 'arguments', 'needed']
+    })
+    console.log(hash) // Transaction hash
+}
+
+
 
 /**
  * Input schema for get balance action.
