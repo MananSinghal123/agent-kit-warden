@@ -18,19 +18,19 @@ dotenv.config();
 async function initializeAgent() {
     try {
         // Initialize LLM
-        const llm = new ChatOpenAI({
-            model: "gpt-4o-mini",
-        });
+        // const llm = new ChatOpenAI({
+        //     model: "gpt-4o-mini",
+        // });
 
-        // const llm = new ChatOpenAI(
-        //     {
-        //         modelName: "google/gemini-2.0-flash-exp:free",
-        //         openAIApiKey: process.env.OPENROUTER_API_KEY,
-        //     },
-        //     {
-        //         basePath: "https://openrouter.ai/api/v1",
-        //     }
-        // );
+        const llm = new ChatOpenAI(
+            {
+                modelName: "google/gemini-2.0-flash-exp:free",
+                openAIApiKey: process.env.OPENROUTER_API_KEY,
+            },
+            {
+                basePath: "https://openrouter.ai/api/v1",
+            }
+        );
 
         // const llm = new ChatOllama({
         //     model: "llama-3.2-3b",
@@ -121,7 +121,7 @@ async function runChatMode(agent: any, config: any) {
         }
     } catch (error) {
         if (error instanceof Error) {
-            console.error("Error:", error.message);
+            console.error("Error:", error);
         }
         process.exit(1);
     } finally {
@@ -138,7 +138,7 @@ async function main() {
         await runChatMode(agent, config);
     } catch (error) {
         if (error instanceof Error) {
-            console.error("Error:", error.message);
+            console.error("Error:", error);
         }
         process.exit(1);
     }
