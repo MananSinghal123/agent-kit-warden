@@ -9,6 +9,7 @@ import { RequestFundsAction } from "./request_funds";
 import { GetPriceAction } from "./get_price";
 import { SendTokenAction } from "./send_token";
 import { CreateOrderAction } from "./create_order";
+import { GetArbitrageAction } from "./get_arbitrage";
 /**
  * Retrieves all Warden action instances.
  *
@@ -26,6 +27,7 @@ export function getAllWardenActions(): WardenAction<WardenActionSchemaAny>[] {
         new GetPriceAction(),
         new SendTokenAction(),
         new CreateOrderAction(),
+        new GetArbitrageAction(),
     ];
 }
 
