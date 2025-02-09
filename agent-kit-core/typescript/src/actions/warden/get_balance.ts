@@ -1,12 +1,11 @@
 import { WardenAction } from "./warden_action";
-import { createPublicClient, createWalletClient, formatEther, http } from "viem";
+import { createPublicClient, formatEther, http } from "viem";
 import { z } from "zod";
 import wardenPrecompileAbi from "../../utils/contracts/abi/wardenPrecompileAbi";
-import {botAbi} from "../../utils/contracts/abi/botAbi";
 import { KNOWN_CONTRACTS } from "../../utils/contracts/constants/known";
 import { primaryChain } from "../../utils/chains";
 import { sepolia } from "viem/chains";
-import { privateKeyToAccount } from "viem/accounts";
+
 
 const wardenContract = KNOWN_CONTRACTS[primaryChain.id]?.WARDEN;
 
