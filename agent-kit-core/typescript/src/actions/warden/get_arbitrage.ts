@@ -30,6 +30,7 @@ if (!wardenContract?.address) {
 export const GetArbitrageInput = z.object({
         token1: z.string(),
         token2: z.string(),
+        // keyId: z.number().positive(),
 });
     
 export async function getArbitrage(
