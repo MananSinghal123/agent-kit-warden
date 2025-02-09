@@ -15,7 +15,7 @@ dotenv.config();
  *
  * @returns Agent executor and config
  */
-async function initializeAgent() {
+export async function initializeAgent() {
     try {
         // Initialize LLM
         // const llm = new ChatOpenAI({
@@ -144,10 +144,7 @@ async function main() {
     }
 }
 
-if (require.main === module) {
-    console.log("Starting Agent...");
-    main().catch((error) => {
-        console.error("Fatal error:", error);
-        process.exit(1);
-    });
-}
+main().catch((error) => {
+    console.error("Fatal error:", error);
+    process.exit(1);
+});

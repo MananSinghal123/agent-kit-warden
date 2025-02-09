@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './ChatBox.css';
 import Message from './Message';
 import InputBox from './InputBox';
-import { sendMessage } from '../services/api';
 
 const ChatBox = () => {
     const [messages, setMessages] = useState([]);
@@ -14,8 +13,16 @@ const ChatBox = () => {
         setLoading(true);
 
         try {
-            const response = await sendMessage(userInput);
-            const botMessage = { text: response, sender: 'bot' };
+            const response = await fetch('http://localhost:3001/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: userInput }),
+            });
+
+            const data = await response.json();
+            const botMessage = { text: data.response, sender: 'bot' };
             setMessages((prevMessages) => [...prevMessages, botMessage]);
         } catch (error) {
             console.error("Error sending message:", error);
