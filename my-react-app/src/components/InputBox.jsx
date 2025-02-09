@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './ChatBox.css';
-
 const InputBox = ({ onSendMessage }) => {
     const [input, setInput] = useState('');
 

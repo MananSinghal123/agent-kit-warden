@@ -1,6 +1,6 @@
 import React from 'react';
 import ChatBox from './components/ChatBox';
-import './styles/App.css';
+import './App.css';  // Add this import
 
 function App() {
     return (

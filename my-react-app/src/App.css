@@ -1,0 +1,61 @@
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(147, 197, 253, 0.15), rgba(59, 130, 246, 0.15));
+    padding: 20px;
+}
+
+.App h1 {
+    color: #1e293b;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    animation: fadeInDown 0.8s ease-out;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add some glass morphism effect to the background */
+.App::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at top right,
+        rgba(59, 130, 246, 0.1),
+        transparent 800px
+    );
+    z-index: -1;
+}
+
+/* Animation for the title */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .App h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Add a subtle hover effect to the title */
+.App h1:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
