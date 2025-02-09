@@ -18,7 +18,7 @@
     "@langchain/ollama": "^0.1.5",
     "@langchain/openai": "^0.3.17",
     "dotenv": "^16.4.5",
-    "warden-agent-kit-core-flash": "^0.0.24",
+    "warden-agent-kit-core-flash": "0.0.24",
     "warden-langchain-flash": "^0.0.8",
     "zod": "^3.22.4"
   },
