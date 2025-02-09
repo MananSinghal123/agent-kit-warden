@@ -20,6 +20,8 @@
     "@langchain/openai": "^0.3.17",
     "@wardenprotocol/warden-agent-kit-core": "^0.0.24",
     "@wardenprotocol/warden-langchain": "^0.0.8",
+    "warden-agent-kit-core-flash": "^0.0.24",
+    "warden-langchain-flash": "^0.0.8",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
